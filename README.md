@@ -76,7 +76,7 @@ MentorX is a comprehensive educational platform that combines AI-powered career 
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/VijayaY836/MentorX
 cd mentorx-platform
 
 # Install dependencies
