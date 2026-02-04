@@ -81,7 +81,7 @@ export function MentorFinder() {
       company: mentorData.company,
       bio: mentorData.bio,
       expertise: mentorData.expertise,
-      availability: mentorData.availability as AvailabilityStatus,
+      availability: mentorData.availability,
       rating: 5.0, // New mentors start with perfect rating
       reviewCount: 0,
       responseTime: mentorData.responseTime,

@@ -73,7 +73,7 @@ export function LandingPage() {
           
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
             Your AI-Powered Path to
-            <span className="text-primary block">All Round Well-Being</span>
+            <span className="text-primary block">Career Success</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
