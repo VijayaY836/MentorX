@@ -639,7 +639,7 @@ export class CareerAIService {
 
 // Study AI Service
 export class StudyAIService {
-  static generateStudyPlan(userProfile: any) {
+  static generateStudyPlan(_userProfile: any) {
     return {
       weeklyGoals: [
         { id: '1', title: 'Complete 5 coding challenges', target: 5, current: 2 },
@@ -858,7 +858,7 @@ export class ChatAIService {
   }
 
   private static generateKnowledgeBasedResponse(
-    message: string, 
+    _message: string, 
     knowledge: any, 
     mode: string, 
     emotionalContext?: any
@@ -909,7 +909,7 @@ export class ChatAIService {
     return response
   }
 
-  private static generateGeneralResponse(message: string, mode: string, emotionalContext?: any): string {
+  private static generateGeneralResponse(_message: string, mode: string, emotionalContext?: any): string {
     const responses = {
       supportive: [
         "I understand you're looking for help with this. While I don't have specific information about this exact topic in my knowledge base, I'm here to support your learning journey. Can you tell me more about what specifically you'd like to understand?",

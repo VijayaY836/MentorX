@@ -16,8 +16,7 @@ import {
   Clock,
   Flame,
   Trophy,
-  User,
-  Calendar
+  User
 } from 'lucide-react'
 
 interface HealthAssessment {
@@ -219,12 +218,11 @@ export function PhysicalHealth() {
   }
 
   const generateExerciseRecommendations = (assessment: HealthAssessment): Exercise[] => {
-    const { bmi, bmiCategory, responses } = assessment
+    const { responses } = assessment
     let recommendations: Exercise[] = []
     
     // Base recommendations on BMI and fitness level
     const exerciseFreq = responses.exercise_frequency
-    const energyLevel = responses.energy_levels
     const breathIssues = responses.shortness_breath
     const healthConditions = responses.health_conditions
     

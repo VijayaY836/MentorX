@@ -20,7 +20,7 @@ import {
 } from 'lucide-react'
 import { mockMentors } from '@/services/mockData'
 import { MentorAIService } from '@/services/aiServices'
-import type { Mentor, AvailabilityStatus } from '@/types'
+import type { Mentor } from '@/types'
 
 export function MentorFinder() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -28,7 +28,7 @@ export function MentorFinder() {
   const [selectedAvailability, setSelectedAvailability] = useState('all')
   const [connectionRequests, setConnectionRequests] = useState<string[]>([])
   const [showFilters, setShowFilters] = useState(false)
-  const [mentors, setMentors] = useState<Mentor[]>(mockMentors)
+  const [mentors, setMentors] = useState(mockMentors)
   const [isBecomeMentorOpen, setIsBecomeMentorOpen] = useState(false)
 
   // Mock user profile for compatibility calculation

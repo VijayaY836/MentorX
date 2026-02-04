@@ -405,7 +405,7 @@ export class StudyAIService {
     return feedbacks[Math.floor(Math.random() * feedbacks.length)]
   }
 
-  private static generateCorrectiveFeedback(question: StudyQuestion, userAnswer: any): string {
+  private static generateCorrectiveFeedback(question: StudyQuestion, _userAnswer: any): string {
     return `Not quite right. The correct answer relates to ${question.relatedConcepts[0]}. ${question.explanation.split('.')[0]}.`
   }
 
@@ -561,7 +561,7 @@ export class StudyAIService {
   }
 
   // Additional helper methods would be implemented here...
-  private static analyzePerformancePatterns(session: StudySession): { strengths: string[], weaknesses: string[] } {
+  private static analyzePerformancePatterns(_session: StudySession): { strengths: string[], weaknesses: string[] } {
     // Analyze patterns in user performance
     return {
       strengths: ['Quick problem identification', 'Strong foundational knowledge'],
@@ -569,7 +569,7 @@ export class StudyAIService {
     }
   }
 
-  private static generateAIRecommendations(session: StudySession, accuracy: number): string[] {
+  private static generateAIRecommendations(_session: StudySession, accuracy: number): string[] {
     const recommendations = []
     
     if (accuracy < 0.6) {
@@ -595,7 +595,7 @@ export class StudyAIService {
     return Math.round(baseTime + accuracyFactor + weaknessFactor)
   }
 
-  private static generateNextSteps(session: StudySession, accuracy: number): string[] {
+  private static generateNextSteps(_session: StudySession, accuracy: number): string[] {
     const steps = []
     
     if (accuracy < 0.7) {
@@ -611,17 +611,17 @@ export class StudyAIService {
     return steps
   }
 
-  private static detectLearningPattern(session: StudySession): 'visual' | 'analytical' | 'practical' | 'mixed' {
+  private static detectLearningPattern(_session: StudySession): 'visual' | 'analytical' | 'practical' | 'mixed' {
     // Analyze user's learning pattern based on performance
     return 'mixed' // Simplified implementation
   }
 
-  private static assessDifficultyProgression(session: StudySession): 'too_fast' | 'optimal' | 'too_slow' {
+  private static assessDifficultyProgression(_session: StudySession): 'too_fast' | 'optimal' | 'too_slow' {
     // Assess if difficulty progression is appropriate
     return 'optimal' // Simplified implementation
   }
 
-  private static analyzeKnowledgeState(session: StudySession): { knowledgeGaps: string[], masteredConcepts: string[] } {
+  private static analyzeKnowledgeState(_session: StudySession): { knowledgeGaps: string[], masteredConcepts: string[] } {
     // Analyze what user knows vs what they need to learn
     return {
       knowledgeGaps: ['Advanced algorithms', 'System design patterns'],
@@ -629,7 +629,7 @@ export class StudyAIService {
     }
   }
 
-  private static generatePersonalizedTips(session: StudySession, learningPattern: string): string[] {
+  private static generatePersonalizedTips(_session: StudySession, learningPattern: string): string[] {
     const tips = [
       'Break complex problems into smaller steps',
       'Practice coding problems daily for 30 minutes',
@@ -643,7 +643,7 @@ export class StudyAIService {
     return tips
   }
 
-  private static suggestFocusAreas(knowledgeGaps: string[], masteredConcepts: string[]): string[] {
+  private static suggestFocusAreas(knowledgeGaps: string[], _masteredConcepts: string[]): string[] {
     return knowledgeGaps.slice(0, 3) // Focus on top 3 gaps
   }
 
@@ -656,7 +656,7 @@ export class StudyAIService {
     return Math.min(100, Math.round((matches.length / keyWords.length) * 100))
   }
 
-  private static generateInterviewFeedback(score: number, questions: InterviewQuestion[], answers: { [key: string]: string }): string {
+  private static generateInterviewFeedback(score: number, questions: InterviewQuestion[], _answers: { [key: string]: string }): string {
     const totalQuestions = questions.length
     const avgScore = score
     

@@ -1,5 +1,5 @@
 // Dynamic Opportunity Service with AI-Powered Matching
-import { OpportunityAIService } from './aiServices'
+// import { OpportunityAIService } from './aiServices'
 
 export interface DynamicOpportunity {
   id: string
@@ -47,10 +47,10 @@ export class OpportunityService {
 
   // Simulate real-time opportunity fetching (in production, this would call actual APIs)
   static async fetchDynamicOpportunities(
-    userProfile: any,
+    _userProfile: any,
     filters: OpportunityFilters = {}
   ): Promise<DynamicOpportunity[]> {
-    const cacheKey = this.generateCacheKey(userProfile, filters)
+    const cacheKey = this.generateCacheKey(_userProfile, filters)
     const now = Date.now()
     
     // Check cache first
@@ -62,11 +62,11 @@ export class OpportunityService {
 
     // Simulate API calls to multiple sources
     const opportunities = await Promise.all([
-      this.fetchLinkedInJobs(userProfile, filters),
-      this.fetchGitHubJobs(userProfile, filters),
-      this.fetchStackOverflowJobs(userProfile, filters),
-      this.fetchEducationalOpportunities(userProfile, filters),
-      this.fetchScholarships(userProfile, filters)
+      this.fetchLinkedInJobs(_userProfile, filters),
+      this.fetchGitHubJobs(_userProfile, filters),
+      this.fetchStackOverflowJobs(_userProfile, filters),
+      this.fetchEducationalOpportunities(_userProfile, filters),
+      this.fetchScholarships(_userProfile, filters)
     ])
 
     // Flatten and deduplicate
@@ -74,7 +74,7 @@ export class OpportunityService {
     const uniqueOpportunities = this.deduplicateOpportunities(allOpportunities)
 
     // AI-powered relevance scoring and insights
-    const scoredOpportunities = await this.scoreOpportunities(uniqueOpportunities, userProfile)
+    const scoredOpportunities = await this.scoreOpportunities(uniqueOpportunities, _userProfile)
 
     // Sort by relevance score
     const sortedOpportunities = scoredOpportunities.sort((a, b) => 
@@ -90,7 +90,7 @@ export class OpportunityService {
 
   // LinkedIn Jobs API simulation
   private static async fetchLinkedInJobs(
-    userProfile: any, 
+    _userProfile: any, 
     filters: OpportunityFilters
   ): Promise<DynamicOpportunity[]> {
     // In production, this would call LinkedIn's Job Search API
@@ -519,7 +519,7 @@ export class OpportunityService {
 
   // GitHub Jobs simulation
   private static async fetchGitHubJobs(
-    userProfile: any, 
+    _userProfile: any, 
     filters: OpportunityFilters
   ): Promise<DynamicOpportunity[]> {
     const mockGitHubJobs: DynamicOpportunity[] = [
@@ -671,7 +671,7 @@ export class OpportunityService {
 
   // Stack Overflow Jobs simulation
   private static async fetchStackOverflowJobs(
-    userProfile: any, 
+    _userProfile: any, 
     filters: OpportunityFilters
   ): Promise<DynamicOpportunity[]> {
     const mockSOJobs: DynamicOpportunity[] = [
@@ -827,7 +827,7 @@ export class OpportunityService {
 
   // Educational opportunities (Coursera, Udacity, etc.)
   private static async fetchEducationalOpportunities(
-    userProfile: any, 
+    _userProfile: any, 
     filters: OpportunityFilters
   ): Promise<DynamicOpportunity[]> {
     const mockEducationalOpps: DynamicOpportunity[] = [
@@ -1088,7 +1088,7 @@ export class OpportunityService {
 
   // Scholarships and grants
   private static async fetchScholarships(
-    userProfile: any, 
+    _userProfile: any, 
     filters: OpportunityFilters
   ): Promise<DynamicOpportunity[]> {
     const mockScholarships: DynamicOpportunity[] = [
@@ -1413,15 +1413,15 @@ export class OpportunityService {
   // Generate AI insights for opportunities
   private static generateAIInsights(
     opportunity: DynamicOpportunity,
-    userProfile: any,
+    _userProfile: any,
     relevanceScore: number
   ): DynamicOpportunity['aiInsights'] {
-    const skillAlignment = this.calculateSkillAlignment(opportunity, userProfile)
-    const careerFit = this.calculateCareerFit(opportunity, userProfile)
-    const growthPotential = this.calculateGrowthPotential(opportunity, userProfile)
+    const skillAlignment = this.calculateSkillAlignment(opportunity, _userProfile)
+    const careerFit = this.calculateCareerFit(opportunity, _userProfile)
+    const growthPotential = this.calculateGrowthPotential(opportunity, _userProfile)
     
-    const matchReason = this.generateMatchReason(opportunity, userProfile, relevanceScore)
-    const recommendations = this.generateRecommendations(opportunity, userProfile)
+    const matchReason = this.generateMatchReason(opportunity, _userProfile, relevanceScore)
+    const recommendations = this.generateRecommendations(opportunity, _userProfile)
 
     return {
       matchReason,
@@ -1487,11 +1487,11 @@ export class OpportunityService {
 
   private static generateMatchReason(
     opportunity: DynamicOpportunity,
-    userProfile: any,
+    _userProfile: any,
     relevanceScore: number
   ): string {
     if (relevanceScore >= 80) {
-      return `Excellent match! This ${opportunity.type} aligns perfectly with your ${userProfile.careerPath || 'career goals'} and skill set.`
+      return `Excellent match! This ${opportunity.type} aligns perfectly with your ${_userProfile.careerPath || 'career goals'} and skill set.`
     } else if (relevanceScore >= 60) {
       return `Good fit! This opportunity matches several of your skills and could advance your career in ${opportunity.industry}.`
     } else if (relevanceScore >= 40) {
@@ -1559,8 +1559,8 @@ export class OpportunityService {
   }
 
   // Utility methods
-  private static generateCacheKey(userProfile: any, filters: OpportunityFilters): string {
-    return `${userProfile.id || 'anonymous'}_${JSON.stringify(filters)}`
+  private static generateCacheKey(_userProfile: any, filters: OpportunityFilters): string {
+    return `${_userProfile.id || 'anonymous'}_${JSON.stringify(filters)}`
   }
 
   private static deduplicateOpportunities(opportunities: DynamicOpportunity[]): DynamicOpportunity[] {

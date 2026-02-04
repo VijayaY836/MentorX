@@ -20,17 +20,14 @@ import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { 
   GraduationCap,
-  Building2,
-  Globe,
   Clock,
   Star,
   Plus,
   X,
-  ExternalLink,
   User
 } from 'lucide-react'
 import { useUserData } from '@/hooks/useUserData'
-import type { Mentor, ExpertiseArea } from '@/types'
+import type { ExpertiseArea } from '@/types'
 
 interface BecomeMentorModalProps {
   isOpen: boolean
@@ -307,7 +304,7 @@ export function BecomeMentorModal({ isOpen, onClose, onSubmit }: BecomeMentorMod
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Current Availability *
                   </label>
-                  <Select value={formData.availability} onValueChange={(value: 'available' | 'busy') => setFormData({...formData, availability: value})}>
+                  <Select value={formData.availability} onValueChange={(value: 'available') => setFormData({...formData, availability: value})}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
